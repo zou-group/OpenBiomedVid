@@ -222,67 +222,6 @@ class MedicalSegmentAnalyzer:
         
         return result
 
-    def gpt_relevant(self, caption: Dict) -> bool:
-        """
-        Ask GPT if a given text is biomedically relevant.
-        
-        Args:
-            text: The text to analyze
-            
-        Returns:
-            bool: True if text is biomedically relevant, False otherwise
-        """
-        client = OpenAI()
-
-        class Result(BaseModel):
-            result: bool
-        
-        system_prompt = """You are an expert at identifying biomedical content.
-        Determine if the given text contains biomedical information (medical procedures, anatomy, diseases, treatments, etc).
-        Respond with only 'True' or 'False'."""
-
-        messages = [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": caption['text']}
-        ]
-
-        completion = client.beta.chat.completions.parse(
-            model="gpt-4o-mini",
-            messages=messages,
-            response_format=Result
-        )
-
-        return completion.choices[0].message.parsed.result
-
-    def generate_qa_pairs(self, caption: Dict) -> List[Dict]:
-        """Generate Q&A pairs from medical segments using LLM."""
-        system_prompt = """You are an expert at Q&A generation and structured data extraction.
-        
-        You will be given unstructured medical caption, generate a focused question and answer pair that covers the content of the caption and should convert it to the given structure."""
-
-        client = OpenAI()
-
-        class Conversation(BaseModel):
-            question: str
-            answer: str
-
-        messages = [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": caption['text']}
-        ]
-    
-        completion = client.beta.chat.completions.parse(
-            model="gpt-4o-mini",
-            messages=messages,
-            response_format=Conversation
-        )
-
-        pair = completion.choices[0].message.parsed
-        return [
-            {"from": "human", "value": pair.question},
-            {"from": "gpt", "value": pair.answer}
-        ]
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Medical Segment Analyzer')
     parser.add_argument('--npy_dir', type=str, 
