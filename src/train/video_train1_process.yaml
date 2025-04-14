@@ -1,0 +1,15 @@
+datasets:
+    subset: null
+    split: train
+    ratio: 1.0
+
+# processor_name_or_path: Qwen/Qwen2-VL-7B-Instruct
+# tokenizer: Qwen/Qwen2-VL-7B-Instruct
+
+processor_name_or_path: Qwen/Qwen2-VL-2B-Instruct
+tokenizer: Qwen/Qwen2-VL-2B-Instruct
+
+num_proc: 64
+video_token: <|video|>
+
+output_path: /path/to/output/path
