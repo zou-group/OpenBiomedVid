@@ -79,8 +79,8 @@
                 </a>
             </td>
             <td align="center">
-                <a href="https://x.com/Yuki_Sahashi">
-                    <img src="https://pbs.twimg.com/profile_images/1868187692800040960/gI4c3pnH_400x400.jpg" height="100;" alt="yukisahashi"/>
+                <a href="https://www.linkedin.com/in/yukisahashi-japan/">
+                    <img src="https://media.licdn.com/dms/image/v2/D5603AQFQLz-mIt1_LA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1728526899115?e=1750291200&v=beta&t=mopxxo3N-noOZZtTjR5-piVbLAN-sOqa6Ftm1vIF9mE" height="100;" alt="yukisahashi"/>
                     <br />
                     <sub><b>Yuki Sahashi</b></sub>
                 </a>
