@@ -52,7 +52,7 @@
 		<tr>
             <td align="center">
                 <a href="https://rthapa84.github.io/">
-                    <img src="https://media.licdn.com/dms/image/v2/D5603AQFc9Bdg5VEPxQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1683671172066?e=1744848000&v=beta&t=c8FL4wKP0ynJIcB4foStA4G3C4ffkakw9Nm4G8f7-ps" height="100;" alt="rthapa84"/>
+                    <img src="https://rthapa84.github.io/assets/img/prof_pic.jpg?2e8380ce955beb4381c1f3918859cf5e" height="100;" alt="rthapa84"/>
                     <br />
                     <sub><b>Rahul Thapa</b></sub>
                 </a>
