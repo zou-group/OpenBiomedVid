@@ -2,7 +2,7 @@
 
 <div align="center">
 
-# Open Biomedical Video: How Well Can General Vision-Language Models Learn Medicine By Watching Public Educational Videos?
+# OpenBiomedVid: How Well Can General Vision-Language Models Learn Medicine By Watching Public Educational Videos?
 
 <!--- BADGES: START --->
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
