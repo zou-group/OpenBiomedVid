@@ -51,8 +51,8 @@
 	<tbody>
 		<tr>
             <td align="center">
-                <a href="https://rthapa84.github.io/">
-                    <img src="https://media.licdn.com/dms/image/v2/D5603AQFc9Bdg5VEPxQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1683671172066?e=1744848000&v=beta&t=c8FL4wKP0ynJIcB4foStA4G3C4ffkakw9Nm4G8f7-ps" height="100;" alt="rthapa84"/>
+                <a href="https://www.linkedin.com/in/rahul-thapa/">
+                    <img src="https://media.licdn.com/dms/image/v2/D5603AQFc9Bdg5VEPxQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1683671172066?e=1750291200&v=beta&t=ljktIYvNmUhAs5Deim2AeqwzxYM2unVVf9tUlZQxCKI" height="100;" alt="rthapa84"/>
                     <br />
                     <sub><b>Rahul Thapa</b></sub>
                 </a>
@@ -80,7 +80,7 @@
             </td>
             <td align="center">
                 <a href="https://x.com/Yuki_Sahashi">
-                    <img src="https://pbs.twimg.com/profile_images/1868187692800040960/gI4c3pnH_400x400.jpg" height="100;" alt="yukisahashi"/>
+                    <img src="https://media.licdn.com/dms/image/v2/D5603AQFQLz-mIt1_LA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1728526899115?e=1750291200&v=beta&t=mopxxo3N-noOZZtTjR5-piVbLAN-sOqa6Ftm1vIF9mE" height="100;" alt="yukisahashi"/>
                     <br />
                     <sub><b>Yuki Sahashi</b></sub>
                 </a>
