@@ -1,0 +1,15 @@
+torch
+torchvision
+transformers
+datasets
+accelerate
+packaging
+ninja
+wandb
+numpy
+Pillow
+tqdm
+colorlog
+deepspeed
+opencv-python
+qwen_vl_utils

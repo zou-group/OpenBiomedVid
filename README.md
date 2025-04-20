@@ -12,24 +12,12 @@
 
 ## Introduction
 
+Publicly available biomedical videos, such as those on YouTube, serve as valuable educational resources for medical students. Unlike standard machine learning datasets, these videos are designed for human learners, often mixing medical imagery with narration, explanatory diagrams, and contextual framing. In this work, we investigate whether such pedagogically rich, yet non-standardized and heterogeneous videos can effectively teach general-domain vision-language models biomedical knowledge. To this end, we introduce OpenBiomedVid, a biomedical video instruction tuning dataset comprising 1031 hours of video-caption and Q/A pairs, curated through a multi-step human-in-the-loop pipeline. Diverse biomedical video datasets are rare, and OpenBiomedVid fills an important gap by providing instruction-style supervision grounded in real-world educational content. Surprisingly, despite the informal and heterogeneous nature of these videos, the fine-tuned Qwen-2-VL models exhibit substantial performance improvements across most benchmarks. The 2B model achieves gains of 98.7\% on video tasks, 71.2\% on image tasks, and 0.2\% on text tasks. The 7B model shows improvements of 37.09\% on video and 11.2\% on image tasks, with a slight degradation of 2.7\% on text tasks compared to their respective base models. To address the lack of standardized biomedical video evaluation datasets, we also introduce two new expert curated benchmarks, MIMICEchoQA and SurgeryVideoQA. On these benchmarks, the 2B model achieves gains of 99.1\% and 98.1\%, while the 7B model shows gains of 22.5\% and 52.1\%, respectively, demonstrating the models' ability to generalize and perform biomedical video understanding on cleaner and more standardized datasets than those seen during training. These results suggest that educational videos created for human learning offer a surprisingly effective training signal for biomedical VLMs.
+
+
 ![pipeline](assets/figures/dataset_pipeline.png)
 
 ![pipeline-example](assets/figures/dataset_comparison.png)
-
-
-## Installation
-
-## Run Video Pipeline
-
-### Video Segmentation
-
-### Caption Generation
-
-## Training
-
-## Run Inference on Benchmarks
-
-## Experiments
 
 ### Main results
 <a align="center">
@@ -43,6 +31,91 @@
     <img src="assets/figures/finetuning_dataset_statistics_hours.png" width="100%">
     <!-- Text. -->
 </a>
+
+
+## Installation
+
+```bash
+conda create -n openbiomedvid python=3.10
+conda activate openbiomedvid
+pip install -r requirements.txt
+pip install -e .
+
+# install flash-attn
+pip install flash-attn --no-build-isolation
+conda install -c conda-forge moviepy
+```
+
+⚠️ Note: If the above installation for flash-attn fails, please clone and build from source:
+
+```bash
+git clone https://github.com/Dao-AILab/flash-attention.git
+cd flash-attention
+python setup.py install
+```
+
+Clone the Liger repository
+```bash
+git clone https://github.com/linkedin/Liger-Kernel.git
+cd Liger-Kernel
+pip install -e .
+```
+
+## 🤗 Datasets
+- [OpenBiomedVid](https://huggingface.co/datasets/connectthapa84/OpenBiomedVid): Instruction tuning dataset
+- [SurgeryVideoQA](https://huggingface.co/datasets/connectthapa84/SurgeryVideoQA): Benchmark for surgical video QA
+- [MIMICEchoQA](https://huggingface.co/datasets/connectthapa84/MIMICEchoQA): Benchmark for echocardiogram QA (requires PhysioNet download)
+
+```python
+from datasets import load_dataset
+
+# Load datasets
+openbiomedvid = load_dataset("connectthapa84/OpenBiomedVid")
+surgery_qa = load_dataset("connectthapa84/SurgeryVideoQA")
+mimic_echo = load_dataset("connectthapa84/MIMICEchoQA")
+```
+
+**⚠️ Notes on Video Access**
+- We do not provide raw YouTube videos due to copyright.
+- You must download them separately for both OpenBiomedVid and SurgeryVideoQA.
+- For MIMICEchoQA, download the official echo videos from PhysioNet:
+🔗 https://physionet.org/content/mimic-iv-echo/0.1/
+
+
+We provide our data curation pipeline in `src/dataset`. However, you do not need to rerun these scripts, as we provide you with huggingface dataset already. All you need to do is download the respective videos, and follow steps below to segment the video to pair with our huggingface dataset. 
+
+### 🧩 Slice Raw Videos into Segments
+
+After downloading the raw videos into a directory (e.g., `videos/`), you can extract segments referenced in the dataset using:
+
+```bash
+python src/openbiomedvid/dataset/slice_videos.py \
+  --dataset OpenBiomedVid \
+  --input_dir /data/rahulthapa/OpenBiomedVid_test/videos \
+  --output_dir /data/rahulthapa/OpenBiomedVid_test/video_segments \
+  --num_processes 32
+```
+
+**This step is mandatory before training or evaluation.**
+
+### 📦 Training
+
+We provide our training package under `tore-train`. The training pipeline is currently set up for streaming data from S3, but can be modified to use local paths.
+
+Scripts are numbered for clarity and include:
+- Video preprocessing
+- Dataset creation
+- Model training
+
+### 📊 Evaluation
+
+Evaluation scripts are provided in `src/openbiomedvid/evaluation`.
+
+To run a demo inference using `Qwen/Qwen2-VL-7B-Instruct` on the `SurgeryVideoQA` benchmark:
+
+- Make sure you have already preprocessed the videos (see [Step 1: Slice Raw Videos into Segments](#-step-1-slice-raw-videos-into-segments)).
+- Then run the evaluation script as shown in the demo (`src/openbiomedvid/evaluation/1_inference.py`).
+- Evaluate the model using GPT evaluator (`src/openbiomedvid/evaluation/3_gpt_eval.py`).
 
 ### Citation
 
