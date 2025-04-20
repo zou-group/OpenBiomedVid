@@ -4,10 +4,6 @@
 
 # OpenBiomedVid: How Well Can General Vision-Language Models Learn Medicine By Watching Public Educational Videos?
 
-<!--- BADGES: START --->
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-<!--- BADGES: END --->
-
 </div>
 
 ## Introduction
@@ -84,7 +80,7 @@ mimic_echo = load_dataset("connectthapa84/MIMICEchoQA")
 
 We provide our data curation pipeline in `src/dataset`. However, you do not need to rerun these scripts, as we provide you with huggingface dataset already. All you need to do is download the respective videos, and follow steps below to segment the video to pair with our huggingface dataset. 
 
-### 🧩 Slice Raw Videos into Segments
+### Slice Raw Videos into Segments
 
 After downloading the raw videos into a directory (e.g., `videos/`), you can extract segments referenced in the dataset using:
 
@@ -98,7 +94,7 @@ python src/openbiomedvid/dataset/slice_videos.py \
 
 **This step is mandatory before training or evaluation.**
 
-### 📦 Training
+### Training
 
 We provide our training package under `tore-train`. The training pipeline is currently set up for streaming data from S3, but can be modified to use local paths.
 
@@ -113,11 +109,16 @@ Evaluation scripts are provided in `src/openbiomedvid/evaluation`.
 
 To run a demo inference using `Qwen/Qwen2-VL-7B-Instruct` on the `SurgeryVideoQA` benchmark:
 
-- Make sure you have already preprocessed the videos (see [Step 1: Slice Raw Videos into Segments](#-step-1-slice-raw-videos-into-segments)).
+- Make sure you have already preprocessed the videos (see [Slice Raw Videos into Segments](#-slice-raw-videos-into-segments)).
 - Then run the evaluation script as shown in the demo (`src/openbiomedvid/evaluation/1_inference.py`).
 - Evaluate the model using GPT evaluator (`src/openbiomedvid/evaluation/3_gpt_eval.py`).
 
+
 ### Citation
+
+```bibtex
+Coming soon
+```
 
 ### Our Team
 <table>
